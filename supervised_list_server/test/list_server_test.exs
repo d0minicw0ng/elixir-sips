@@ -3,7 +3,7 @@ defmodule ListServerTest do
 
   # Clear the ListServer before each test
   setup do
-    ListServer.start_link
+    ListSupervisor.start_link
     ListServer.clear
   end
 
