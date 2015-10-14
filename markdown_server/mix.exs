@@ -36,7 +36,8 @@ defmodule MarkdownServer.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:ex_doc,  "~> 0.10", only: :dev},
-     {:markdown, github: "devinus/markdown"}
+     {:markdown, github: "devinus/markdown"},
+     {:eml, github: "zambal/eml"}
    ]
   end
 end
