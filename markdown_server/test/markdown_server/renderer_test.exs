@@ -1,6 +1,12 @@
 defmodule MarkdownServer.RendererTest do
   use ExUnit.Case
 
+  test "renders markdown documents from files" do
+    rendered_document = MarkdownServer.Renderer.render("./test/support/sample_files/basic.md")
+    expected_body = "<p>This is a basic doc.</p>\n"
+    assert %MarkdownServer.RenderedDocument{body: expected_body} == rendered_document
+  end
+
   test "renders markdown documents from strings" do
     rendered_document = MarkdownServer.Renderer.render_string("This doc has no title.")
     expected_body     = "<p>This doc has no title.</p>\n"

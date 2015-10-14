@@ -3,6 +3,11 @@ defmodule MarkdownServer.RenderedDocument do
 end
 
 defmodule MarkdownServer.Renderer do
+  def render(file_path) do
+    {:ok, string} = File.read(file_path)
+    string |> render_string
+  end
+
   def render_string(string) do
     body = string |> Markdown.to_html
     %MarkdownServer.RenderedDocument{body: body, title: title_for(body)}

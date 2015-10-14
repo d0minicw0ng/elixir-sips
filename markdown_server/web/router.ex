@@ -17,7 +17,8 @@ defmodule MarkdownServer.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/",           PageController, :index
-    get "pages/:page", PageController, :show, as: :page
+    get "pages/:page", PageController, :show,  as: :page
+    get "pages",       PageController, :index, as: :page
   end
 
   # Other scopes may use custom stacks.
