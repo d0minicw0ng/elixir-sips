@@ -13,6 +13,10 @@ defmodule MarkdownServer.PageController do
   end
 
   defp base_dir do
+    System.get_env("MARKDOWN_SERVER_DIR") || default_base_dir
+  end
+
+  defp default_base_dir do
     "./test/support/sample_files/"
   end
 
@@ -20,6 +24,12 @@ defmodule MarkdownServer.PageController do
     "#{base_dir}#{conn.params["page"]}"
   end
 
-  defp markdown_files, do: File.ls!(base_dir)
+  defp files, do: File.ls!(base_dir)
 
+  defp markdown_files do
+    files |>
+      Enum.filter(fn(filename) ->
+        String.ends_with?(filename, [".md", ".markdown"])
+      end)
+  end
 end
